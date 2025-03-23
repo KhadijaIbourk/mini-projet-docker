@@ -23,22 +23,22 @@ Ce projet consiste à conteneuriser une application Python avec Flask en utilisa
 
 **Capture d'écran :**
 
-![alt text](screenshots/image.png)
+![alt text](screenshots/Picture.png)
 ### 2.	Construction et test de l'image :
 -	Nous avons construit l'image avec la commande docker build -t api-image 
 
-![Image](screenshots/image%20copy.png)
+![Image](screenshots/Picture2.png)
 
 
-![Image](screenshots/image%20copy%202.png)
+![Image](screenshots/Picture3.png)
 
 - Ensuite, nous avons lancé le conteneur en montant le fichier student_age.json dans le dossier /data du conteneur.
 
-![Image](screenshots/image%20copy%203.png)
+![Image](screenshots/Picture4.png)
 
 -	Pour vérifier que l'API fonctionne correctement, nous avons utilisé la commande curl -u root:root -X GET http://<host IP>:<API exposed port>/SUPMIT/api/v1.0/get_student_ages.
  La réponse de l'API a confirmé que tout fonctionnait correctement.
- ![Image](screenshots/image%20copy%204.png)
+ ![Image](screenshots/Picture5.png)
 
 ## II. Infrastructure as Code (docker-compose)
 ### 1.	Création du fichier docker-compose.yml :
@@ -48,30 +48,30 @@ Ce projet consiste à conteneuriser une application Python avec Flask en utilisa
 -	Pour le service api, nous avons utilisé l'image construite précédemment et monté le fichier student_age.json dans /data/student_age.json.
 -	Nous avons configuré les ports et ajouté un réseau spécifique pour permettre la communication entre les services.
 
- ![Image](screenshots/image%20copy%205.png)
+ ![Image](screenshots/Picture6.png)
 ### 2.	Lancement de l'application :
 -	Nous avons lancé l'application avec la commande docker-compose up -d
-![Image](screenshots/image%20copy%206.png)
+![Image](screenshots/Picture7.png)
 
 -	Après le démarrage des conteneurs, nous avons accédé à l'interface web et cliqué sur le bouton "List Student" pour afficher la liste des étudiants.
-![Image](screenshots/image%20copy%207.png)
+![Image](screenshots/Picture8.png)
 
 - La liste a été récupérée avec succès depuis l'API, confirmant que l'application fonctionne correctement.
-![Image](screenshots/image%20copy%208.png)
+![Image](screenshots/Picture9.png)
 ## III. Docker Registry
 ### 1.	Déploiement d'un registre Docker privé :
 -	Nous avons déployé un registre Docker privé en utilisant l'image registry et une interface web pour visualiser les images avec l'image joxit/docker-registry-ui.
 -	Nous avons configuré le fichier docker-compose-registry.yml pour lancer le registre et l'interface web.
 
-![Image](screenshots/image%20copy%209.png)
+![Image](screenshots/Picture11.png)
 
-![Image](screenshots/image%20copy%2010.png)
+![Image](screenshots/Picture12.png)
 -	 Après avoir lancé le registre, nous avons poussé l'image de l'API sur le registre privé en utilisant la commande docker tag et docker push.
-![Image](screenshots/image%20copy%2011.png)
+![Image](screenshots/Picture13.png)
 
 ### 2.	Vérification dans l'interface web :
 -	Nous avons accédé à l'interface web du registre pour vérifier que l'image de l'API a bien été poussée et est disponible dans le registre privé.
-![Image](screenshots/image%20copy%2012.png)
+![Image](screenshots/Picture14.png)
 
 
 ## Fichiers de Configuration
